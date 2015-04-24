@@ -1,4 +1,3 @@
-forked?
 #slim-jsonAPI
 [![Latest Stable Version](https://poser.pugx.org/entomb/slim-json-api/v/stable.png)](https://packagist.org/packages/entomb/slim-json-api)
 [![Total Downloads](https://poser.pugx.org/entomb/slim-json-api/downloads.png)](https://packagist.org/packages/entomb/slim-json-api)
