@@ -46,11 +46,14 @@ class JsonApiMiddleware extends \Slim\Middleware {
         // Generic error handler
         $app->error(function (Exception $e) use ($app) {
 
-
-            $app->render(($e->getCode() == E_USER_ERROR)?400:500,array(
+            $error_resp = array(
                 'error' => true,
                 'msg'   => \JsonApiMiddleware::_errorType($e->getCode()) .": ". $e->getMessage(),
-            ));
+            );
+            if(method_exists($e, 'getErrors')){
+                $error_resp['errors'] = $e->getErrors();
+            }
+            $app->render(($e->getCode() == E_USER_ERROR)?400:500, $error_resp);
         });
 
         // Not found handler (invalid routes, invalid method types)
